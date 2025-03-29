@@ -13,6 +13,7 @@
     <service name="py2pack_generate" mode="buildtime">
         <param name="name">requests-stdin</param>
 	<param name="localfile">requests_stdin-*.tar.gz</param>
+        <param name="source-url">https://files.pythonhosted.org/packages/source/r/requests_stdin/requests_stdin-%{version}.tar.gz</param>
     </service>
     <service name="perl_regex" mode="buildtime">
         <param name="file">*.spec</param>
@@ -23,4 +24,10 @@
           s/(%autosetup -p1 -n requests)-stdin/\1_stdin/g;
           s/(%{python_sitelib}\/requests_stdin)\n/\1.py\n%pycache_only %{python_sitelib}\/__pycache__\/requests_stdin.*.py*\n%license LICENSE\n%doc README.rst\n/g;</param> 
     </service>
+
+    <service name="perl_regex" mode="buildtime">
+        <param name="file">*.spec</param>
+        <param name="regexfile">reg.pl</param> 
+    </service>
+    
 </services>
